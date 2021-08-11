@@ -1,0 +1,17 @@
+SELECT
+  Dia
+, ISNULL(max([01]) OVER (ORDER BY Dia),0) [01]
+, ISNULL(max([02]) OVER (ORDER BY Dia),0) [02]
+, ISNULL(max([03]) OVER (ORDER BY Dia),0) [03]
+, ISNULL(max([04]) OVER (ORDER BY Dia),0) [04]
+, ISNULL(max([05]) OVER (ORDER BY Dia),0) [05]
+, ISNULL(max([06]) OVER (ORDER BY Dia),0) [06]
+, ISNULL(max([07]) OVER (ORDER BY Dia),0) [07]
+, ISNULL(max([08]) OVER (ORDER BY Dia),0) [08]
+, ISNULL(max([09]) OVER (ORDER BY Dia),0) [09]
+, ISNULL(max([10]) OVER (ORDER BY Dia),0) [10]
+, ISNULL(max([11]) OVER (ORDER BY Dia),0) [11]
+, ISNULL(max([12]) OVER (ORDER BY Dia),0) [12]
+FROM #TEMP PIVOT
+(MAX([% Fat. Dia / Mês]) FOR Mês IN ([01],[02],[03],[04],[05],[06], [07], [08], [09], [10], [11], [12]) ) P
+ORDER BY Dia
